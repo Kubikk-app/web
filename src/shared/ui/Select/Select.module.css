@@ -1,0 +1,116 @@
+.selectWrapper {
+  position: relative;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+    'Helvetica Neue', sans-serif;
+  border-radius: 12px;
+  margin: 20px;
+}
+
+.small {
+  width: 200px;
+}
+
+.medium {
+  width: 400px;
+}
+
+.big {
+  width: 600px;
+}
+
+.default {
+  width: auto;
+}
+
+.arrow {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transition: transform 0.2s ease-in-out, margin-top 0.2s ease-in-out;
+  margin-top: -12px;
+}
+
+.placeholder {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 30px;
+  padding: 20px;
+  cursor: pointer;
+  border: 1px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: rgba(0, 0, 0);
+  background: rgb(255, 255, 255);
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.placeholder[data-status='default'] {
+  border: 1px solid rgba(0, 0, 0, 0.6);
+}
+
+.placeholder[data-status='invalid'] {
+  border: 1px solid rgba(255, 0, 0, 1);
+}
+
+.placeholder[data-status='disabled'] {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.placeholder[data-selected='true'] {
+  color: rgb(0, 0, 0);
+}
+
+.selectWrapper[data-is-active='true'] .arrow {
+  transform: rotate(180deg);
+  margin-top: -6px;
+}
+
+.selectWrapper[data-is-active='true'] .placeholder {
+  border: 1px solid #0022f5;
+  background-color: rgba(0, 34, 245, 0.1);
+}
+
+.selectWrapper:not([data-is-active='true']) .placeholder:not(:not([data-status='default'])):hover {
+  border: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.label {
+  font-size: 10px;
+  color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+}
+
+.selectWrapper[label-mode='inside'] .label {
+  /* top: -1px; */
+  left: 20px;
+}
+
+.selectWrapper[label-mode='outside'] .label {
+  top: -16px;
+}
+
+.select {
+  display: grid;
+  position: absolute;
+  list-style: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.selectWrapper[data-mode='cells'] .select {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.selectWrapper[data-mode='cells'] .option {
+  justify-content: center;
+}

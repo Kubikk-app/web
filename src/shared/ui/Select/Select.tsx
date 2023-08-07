@@ -1,7 +1,7 @@
 import { CSSProperties, MouseEventHandler, useEffect, useRef, useState } from 'react';
 import MenuItem, { Option } from './Option';
 import classes from './styles/Select.module.css';
-import ArrowDown from './assets/arrow.svg';
+import ArrowIcon from '../../icons/ArrowIcon';
 
 type SelectStatus = 'default' | 'invalid' | 'disabled';
 
@@ -18,11 +18,11 @@ interface SelectProps {
   onOpen?: () => void;
   onClick?: () => void;
   style?: CSSProperties;
-  customArrowSrc?: string;
+  size?: 'small' | 'medium' | 'big' | 'default';
   label?: string;
 }
 
-const Select = (props: SelectProps) => {
+export const Select = (props: SelectProps) => {
   const {
     mode = 'rows',
     options,
@@ -34,7 +34,7 @@ const Select = (props: SelectProps) => {
     onClick,
     onOpen,
     style = {},
-    customArrowSrc,
+    size = 'default',
     labelMode = 'outside',
     label,
   } = props;
@@ -120,7 +120,7 @@ const Select = (props: SelectProps) => {
   return (
     <div
       style={style}
-      className={classes.selectWrapper}
+      className={classes.selectWrapper + ' ' + classes[size]}
       ref={rootRef}
       data-is-active={isOpen}
       data-mode={mode}
@@ -130,7 +130,7 @@ const Select = (props: SelectProps) => {
       {selectedEl ? <label className={classes.label}>{label}</label> : null}
 
       <div className={classes.arrow}>
-        <img src={customArrowSrc ?? ArrowDown} alt="arrow" />
+        <ArrowIcon />
       </div>
       <div
         className={classes.placeholder}
@@ -153,5 +153,3 @@ const Select = (props: SelectProps) => {
     </div>
   );
 };
-
-export default Select;
