@@ -9,16 +9,28 @@ const meta: Meta<typeof Avatar> = {
 export default meta;
 type Story = StoryObj<typeof Avatar>;
 
-export const AvatarFromFolder: Story = {
+export const AvatarFromFolderS: Story = {
   args: {
     src: AvatarImg,
-    alt: 'avatar'
+    alt: 'avatar',
+    size: 'small'
   },
 };
 
-export const AvatarFromServer: Story = {
+
+export const AvatarFromServerM: Story = {
   args: {
     src: 'https://i.pinimg.com/originals/59/20/63/59206380ed869b62ac538c9e678a2b04.png',
-    alt: 'avatar'
+    alt: 'avatar',
+    size: 'medium'
+  },
+};
+
+
+export const AvatarFromServerL: Story = {
+  args: {
+    src: 'https://i.pinimg.com/originals/59/20/63/59206380ed869b62ac538c9e678a2b04.png',
+    alt: 'avatar',
+    size: 'large'
   },
 };

@@ -1,5 +1,6 @@
 import {InputHTMLAttributes, ChangeEvent} from 'react';
-import styles from './Input.module.css'
+import styles from './Input.module.css';
+import cn from 'classnames';
 
 
 type HTMLInputProps = Omit<
@@ -12,7 +13,7 @@ interface InputProps extends HTMLInputProps {
   value?: string | number;
   // eslint-disable-next-line no-unused-vars
   onChange?: (value: string) => void;
-
+  error?: boolean;
 }
 
 export const Input = (props: InputProps) => {
@@ -21,6 +22,7 @@ export const Input = (props: InputProps) => {
     onChange,
     type = 'text',
     placeholder='Text',
+    error,
     ...otherProps
   } = props;
 
@@ -35,7 +37,9 @@ export const Input = (props: InputProps) => {
         onChange={onChangeHandler}
         placeholder={placeholder}
         value={value}
-        className={styles.input}
+        className={cn(styles.input, {
+          [styles.error]: error
+        })}
         type={type}
         {...otherProps}
       />
