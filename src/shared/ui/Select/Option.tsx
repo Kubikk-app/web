@@ -2,15 +2,16 @@ import { useEffect, useRef } from 'react';
 import type { MouseEventHandler } from 'react';
 import classes from './styles/Option.module.css';
 
-export type Option = {
+export type OptionType = {
   title: string;
   value: string;
 };
+
 type OptionProps = {
-  option: Option;
-  onClick: (value: Option['value']) => void;
+  option: OptionType;
+  onClick: (value: OptionType['value']) => void;
 };
-const OptionEl = (props: OptionProps) => {
+export const Option = (props: OptionProps) => {
   const {
     option: { value, title },
     onClick,
@@ -18,7 +19,7 @@ const OptionEl = (props: OptionProps) => {
   const optionRef = useRef<HTMLLIElement>(null);
 
   const handleClick =
-    (clickedValue: Option['value']): MouseEventHandler<HTMLLIElement> =>
+    (clickedValue: OptionType['value']): MouseEventHandler<HTMLLIElement> =>
     () => {
       onClick(clickedValue);
     };
@@ -51,5 +52,3 @@ const OptionEl = (props: OptionProps) => {
     </li>
   );
 };
-
-export default OptionEl;

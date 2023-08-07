@@ -14,7 +14,7 @@
     color: rgb(0, 0, 0);
 }
 
-.option[aria-selected="true"] {
+.option[aria-selected='true'] {
     background-color: rgba(0, 0, 0, 0.05);
 }
 

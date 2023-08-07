@@ -1,19 +1,19 @@
 import { CSSProperties, MouseEventHandler, useEffect, useRef, useState } from 'react';
-import MenuItem, { Option } from './Option';
-import classes from './styles/Select.module.css';
-import ArrowIcon from '../../icons/ArrowIcon';
+import { OptionType, Option } from './Option';
+import classes from './Select.module.css';
+import { Arrow } from '../../icons';
 
 type SelectStatus = 'default' | 'invalid' | 'disabled';
 
 interface SelectProps {
   fullWidth?: boolean;
-  selected?: Option | null;
-  options: Option[];
+  selected?: OptionType | null;
+  options: OptionType[];
   placeholder?: string;
   mode?: 'rows' | 'cells';
   labelMode?: 'outside' | 'inside';
   status?: SelectStatus;
-  onChange?: (selected: Option['value']) => void;
+  onChange?: (selected: OptionType['value']) => void;
   onClose?: () => void;
   onOpen?: () => void;
   onClick?: () => void;
@@ -23,31 +23,17 @@ interface SelectProps {
 }
 
 export const Select = (props: SelectProps) => {
-  const {
-    mode = 'rows',
-    options,
-    placeholder,
-    status = 'default',
-    selected,
-    onChange,
-    onClose,
-    onClick,
-    onOpen,
-    style = {},
-    size = 'default',
-    labelMode = 'outside',
-    label,
-  } = props;
+  const { mode = 'rows', status = 'default', style = {}, size = 'default', labelMode = 'outside' } = props;
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const rootRef = useRef<HTMLDivElement>(null);
   const placeholderRef = useRef<HTMLDivElement>(null);
-  const [selectedEl, setSelectedEl] = useState<Option | undefined | null>(selected);
+  const [selectedEl, setSelectedEl] = useState<OptionType | undefined | null>(props.selected);
 
   useEffect(() => {
     const handleClick = (event: MouseEvent) => {
       const { target } = event;
       if (target instanceof Node && !rootRef.current?.contains(target)) {
-        isOpen && onClose?.();
+        isOpen && props.onClose?.();
         setIsOpen(false);
       }
     };
@@ -57,7 +43,7 @@ export const Select = (props: SelectProps) => {
     return () => {
       window.removeEventListener('click', handleClick);
     };
-  }, [onClose]);
+  }, [props.onClose]);
 
   useEffect(() => {
     if (props.fullWidth) {
@@ -77,9 +63,9 @@ export const Select = (props: SelectProps) => {
           }
 
           if (!prev) {
-            onOpen?.();
+            props.onOpen?.();
           } else {
-            onClose?.();
+            props.onClose?.();
           }
           return !prev;
         });
@@ -92,16 +78,16 @@ export const Select = (props: SelectProps) => {
     };
   }, []);
 
-  const handleOptionClick = (value: Option['value']) => {
+  const handleOptionClick = (value: OptionType['value']) => {
     const selected = props.options.find((el) => el.value === value && value !== selectedEl?.value);
 
     setIsOpen(false);
     setSelectedEl(selected);
-    onClose?.();
-    onChange?.(value);
+    props.onClose?.();
+    props.onChange?.(value);
   };
   const handlePlaceHolderClick: MouseEventHandler<HTMLDivElement> = () => {
-    onClick?.();
+    props.onClick?.();
 
     setIsOpen((prev) => {
       if (status === 'disabled') {
@@ -109,9 +95,9 @@ export const Select = (props: SelectProps) => {
       }
 
       if (!prev) {
-        onOpen?.();
+        props.onOpen?.();
       } else {
-        onClose?.();
+        props.onClose?.();
       }
       return !prev;
     });
@@ -119,7 +105,7 @@ export const Select = (props: SelectProps) => {
 
   return (
     <div
-      style={style}
+      style={props.style}
       className={classes.selectWrapper + ' ' + classes[size]}
       ref={rootRef}
       data-is-active={isOpen}
@@ -127,26 +113,26 @@ export const Select = (props: SelectProps) => {
       data-testid="selectWrapper"
       label-mode={labelMode}
     >
-      {selectedEl ? <label className={classes.label}>{label}</label> : null}
+      {selectedEl ? <label className={classes.label}>{props.label}</label> : null}
 
       <div className={classes.arrow}>
-        <ArrowIcon />
+        <Arrow />
       </div>
       <div
         className={classes.placeholder}
-        data-status={status}
-        data-selected={Boolean(selected?.value)}
+        data-status={props.status}
+        data-selected={Boolean(props.selected?.value)}
         onClick={handlePlaceHolderClick}
         role="button"
         tabIndex={0}
         ref={placeholderRef}
       >
-        {selectedEl?.title || placeholder || label}
+        {selectedEl?.title || props.placeholder || props.label}
       </div>
       {isOpen && (
         <ul className={classes.select} data-testid="selectDropdown">
-          {options.map((option) => (
-            <MenuItem key={option.value} option={option} onClick={handleOptionClick} />
+          {props.options.map((option) => (
+            <Option key={option.value} option={option} onClick={handleOptionClick} />
           ))}
         </ul>
       )}

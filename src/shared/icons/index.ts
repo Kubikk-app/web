@@ -1,1 +1,1 @@
-export {Arrow} from './ArrowIcon.tsx'
+export { Arrow } from './ArrowIcon.tsx';
