@@ -7,7 +7,7 @@ export const MainPage = () => {
     <div
       className={cn(styles.main)}
     >
-      Ошибка
+      Главная страница
     </div>
   );
 };
