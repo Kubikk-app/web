@@ -4,10 +4,6 @@ interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   className?: string;
 }
 
-interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
-  className?: string;
-}
-
 export const Image = (props: ImageProps) => {
   const {
     className,

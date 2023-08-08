@@ -1,5 +1,3 @@
-import {Input} from './Input/Input.tsx';
-import {Image} from './Image/Image.tsx';
-import {Avatar} from './Avatar/Avatar.tsx';
-
-export {Input, Image, Avatar};
+export {Input} from './Input/Input.tsx';
+export {Image} from './Image/Image.tsx';
+export {Avatar} from './Avatar/Avatar.tsx';
