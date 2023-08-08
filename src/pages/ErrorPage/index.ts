@@ -1,3 +1,1 @@
-import {ErrorPage} from './ui/ErrorPage.tsx';
-
-export {ErrorPage}
+export {ErrorPage} from './ui/ErrorPage.tsx';

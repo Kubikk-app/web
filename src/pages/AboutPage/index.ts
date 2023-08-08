@@ -1,3 +1,1 @@
-import {AboutPage} from './ui/AboutPage.tsx';
-
-export {AboutPage}
+export {AboutPage} from './ui/AboutPage.tsx';
