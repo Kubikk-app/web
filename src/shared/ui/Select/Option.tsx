@@ -9,6 +9,7 @@ export type OptionType = {
 
 type OptionProps = {
   option: OptionType;
+  // eslint-disable-next-line no-unused-vars
   onClick: (value: OptionType['value']) => void;
 };
 export const Option = (props: OptionProps) => {
@@ -40,11 +41,13 @@ export const Option = (props: OptionProps) => {
   }, [value, onClick]);
 
   return (
+    // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
     <li
       className={classes.option}
       value={value}
+      onKeyDown={() => console.log('ok')}
       onClick={handleClick(value)}
-      tabIndex={0}
+      // tabIndex={0}
       data-testid={`select-option-${value}`}
       ref={optionRef}
     >

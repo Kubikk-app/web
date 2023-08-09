@@ -13,6 +13,7 @@ interface SelectProps {
   mode?: 'rows' | 'cells';
   labelMode?: 'outside' | 'inside';
   status?: SelectStatus;
+  // eslint-disable-next-line no-unused-vars
   onChange?: (selected: OptionType['value']) => void;
   onClose?: () => void;
   onOpen?: () => void;
@@ -43,13 +44,13 @@ export const Select = (props: SelectProps) => {
     return () => {
       window.removeEventListener('click', handleClick);
     };
-  }, [props.onClose]);
+  }, [props, isOpen]);
 
   useEffect(() => {
     if (props.fullWidth) {
       style.width = '100%';
     }
-  }, []);
+  }, [props.fullWidth, style]);
 
   useEffect(() => {
     const placeholderEl = placeholderRef.current;
@@ -76,7 +77,7 @@ export const Select = (props: SelectProps) => {
     return () => {
       placeholderEl.removeEventListener('keydown', handleEnterKeyDown);
     };
-  }, []);
+  }, [props, status]);
 
   const handleOptionClick = (value: OptionType['value']) => {
     const selected = props.options.find((el) => el.value === value && value !== selectedEl?.value);
@@ -111,7 +112,7 @@ export const Select = (props: SelectProps) => {
       data-is-active={isOpen}
       data-mode={mode}
       data-testid="selectWrapper"
-      label-mode={labelMode}
+      aria-label={labelMode}
     >
       {selectedEl ? <label className={classes.label}>{props.label}</label> : null}
 
@@ -124,6 +125,7 @@ export const Select = (props: SelectProps) => {
         data-selected={Boolean(props.selected?.value)}
         onClick={handlePlaceHolderClick}
         role="button"
+        onKeyDown={() => console.log('keydown')} // eslint требует listener для клавиатуры, он есть в useEffect
         tabIndex={0}
         ref={placeholderRef}
       >

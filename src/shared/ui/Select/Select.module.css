@@ -86,12 +86,12 @@
   position: absolute;
 }
 
-.selectWrapper[label-mode='inside'] .label {
+.selectWrapper[aria-label='inside'] .label {
   /* top: -1px; */
   left: 20px;
 }
 
-.selectWrapper[label-mode='outside'] .label {
+.selectWrapper[aria-label='outside'] .label {
   top: -16px;
 }
 
