@@ -11,9 +11,9 @@ interface SelectProps {
   options: OptionType[];
   placeholder?: string;
   mode?: 'rows' | 'cells';
-  labelMode?: 'outside' | 'inside';
+  // labelMode?: 'outside' | 'inside';
   status?: SelectStatus;
-  onChange?: (selected: OptionType['value']) => void;
+  onChange?: (_selected: OptionType['value']) => void;
   onClose?: () => void;
   onOpen?: () => void;
   onClick?: () => void;
@@ -23,7 +23,7 @@ interface SelectProps {
 }
 
 export const Select = (props: SelectProps) => {
-  const { mode = 'rows', status = 'default', style = {}, size = 'default', labelMode = 'outside' } = props;
+  const { mode = 'rows', status = 'default', style = {}, size = 'default', /*labelMode = 'outside'*/ } = props;
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const rootRef = useRef<HTMLDivElement>(null);
   const placeholderRef = useRef<HTMLDivElement>(null);
@@ -111,7 +111,7 @@ export const Select = (props: SelectProps) => {
       data-is-active={isOpen}
       data-mode={mode}
       data-testid="selectWrapper"
-      label-mode={labelMode}
+      // label-mode={labelMode}
     >
       {selectedEl ? <label className={classes.label}>{props.label}</label> : null}
 

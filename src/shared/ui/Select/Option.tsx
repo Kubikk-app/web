@@ -9,7 +9,7 @@ export type OptionType = {
 
 type OptionProps = {
   option: OptionType;
-  onClick: (value: OptionType['value']) => void;
+  onClick: (_value: OptionType['value']) => void;
 };
 export const Option = (props: OptionProps) => {
   const {
