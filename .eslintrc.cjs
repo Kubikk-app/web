@@ -29,7 +29,7 @@ module.exports = {
   plugins: ['react-refresh'],
   rules: {
     'no-unused-vars': [
-      'error',
+      'warn',
       {
         vars: 'all',
         args: 'after-used',
@@ -37,6 +37,7 @@ module.exports = {
         argsIgnorePattern: '^_',
       },
     ],
+    'jsx-a11y/label-has-associated-control': 'off',
     'react/react-in-jsx-scope': 'off',
     'react-refresh/only-export-components': [
       'warn',

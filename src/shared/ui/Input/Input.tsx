@@ -1,48 +1,42 @@
-import {InputHTMLAttributes, ChangeEvent} from 'react';
+import { InputHTMLAttributes } from 'react';
 import styles from './Input.module.css';
 import cn from 'classnames';
 
 
 type HTMLInputProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
-  'value' | 'onChange'
+  'value'
 >;
+
 
 interface InputProps extends HTMLInputProps {
   className?: string;
   value?: string | number;
-  // eslint-disable-next-line no-unused-vars
-  onChange?: (value: string) => void;
+  id?: string;
   error?: boolean;
-}
+  type?: 'radio' | 'datetimeLocal' | 'password' | 'month' | 'number' | 'file' | 'email';
+ }
+
 
 export const Input = (props: InputProps) => {
   const {
     value,
-    onChange,
-    type = 'text',
-    placeholder='Text',
+    type,
     error,
+    id,
     ...otherProps
   } = props;
 
-  const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    onChange?.(event.target.value);
-  };
-
 
   return (
-    <div className={styles.InputWrapp}>
       <input
-        onChange={onChangeHandler}
-        placeholder={placeholder}
         value={value}
-        className={cn(styles.input, {
+        className={cn(styles.Input, {
           [styles.error]: error
         })}
+        id={id}
         type={type}
         {...otherProps}
       />
-    </div>
   );
 };

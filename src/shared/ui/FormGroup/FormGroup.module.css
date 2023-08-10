@@ -1,0 +1,13 @@
+.FormGroup{
+    width: 600px;
+    margin: 20px;
+    display: flex;
+    position: relative;
+}
+.row {
+    flex-direction: row;
+}
+
+.vert{
+    flex-direction: column;
+}
