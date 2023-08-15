@@ -1,0 +1,120 @@
+.bigSize {
+    --width: 400px;
+    --thumb-size: 28px;
+}
+
+.midSize {
+    --width: 300px;
+    --thumb-size: 28px;
+}
+
+.smallSize {
+    --width: 200px;
+    --thumb-size: 28px;
+}
+
+.sliderRangeWrapper {
+    --primary: #6765F8;
+    --secondary: #BAB9F1;
+    --white: #ffffff;
+    --primary-disabled: #989EAF;
+    --secondary-disabled: #CDCFD5;
+
+    --width: 0;
+    --thumb-size: 0px;
+
+    --height: 30px;
+    --height-track: 5px;
+    --thumb-inner-size: 16px;
+
+    height: var(--height);
+
+    padding-top: calc(-1*var(--height-track)/2 + var(--thumb-size)/2 + 100px);
+}
+
+
+
+.input[type="range"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    width: var(--width);
+    height: var(--height-track);
+    border-radius: 12px;
+    cursor: pointer;
+
+    margin: 0;
+
+    align-self: center;
+    justify-self: center;
+}
+
+.input[type="range"] {
+    background-color: var(--secondary-disabled) !important;
+}
+
+/* That's styles is not needed to tha Mozilla and Chrome, but his not tested on the Safari.*/
+
+/*.input[type="range"]::-webkit-slider-runnable-track {*/
+/*    height: var(--height-track);*/
+
+/*    border-radius: 12px;*/
+/*    cursor: pointer;*/
+/*}*/
+/*.input[type="range"]::-moz-range-track {*/
+/*    height: var(--height-track);*/
+
+/*    outline: none;*/
+/*    border-radius: 12px;*/
+/*    cursor: pointer;*/
+/*}*/
+
+.input[type="range"]:focus {
+    outline: none;
+}
+
+.input[type='range']::-webkit-slider-thumb {
+    box-sizing: border-box;
+
+    -webkit-appearance: none;
+
+    width: var(--thumb-size);
+    height: var(--thumb-size);
+    background: var(--white);
+    border: calc(var(--thumb-size)*(3/14)) solid var(--primary);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.input[type="range"]::-moz-range-thumb  {
+    box-sizing: border-box;
+
+    -moz-appearance: none;
+
+    width: var(--thumb-size);
+    height: var(--thumb-size);
+    background: var(--white);
+    border: 6px solid var(--primary);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+
+.input[type='range']:disabled::-webkit-slider-thumb {
+    border-color: var(--primary-disabled)
+}
+.input[type='range']:disabled::-moz-range-thumb {
+    border-color: var(--primary-disabled)
+}
+
+.input[type='range']:focus::-webkit-slider-thumb {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+.input[type="range"]:focus::-moz-range-thumb {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+
+}
