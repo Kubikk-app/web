@@ -1,9 +1,12 @@
-import {ForwardedRef, forwardRef} from 'react';
-import {CheckboxProps} from "./Checkbox.props.ts";
+import { ForwardedRef, forwardRef, DetailedHTMLProps, InputHTMLAttributes } from 'react';
 import styles from './Checkbox.module.css';
 import cn from "classnames";
-import {CheckIcon} from "@/shared/icons";
+import { CheckIcon } from "@/shared/icons";
 
+export interface CheckboxProps extends Omit<DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, 'type'> {
+    label?: string;
+    error?: boolean; // FieldError (if we will use 'react-hook-form')
+}
 
 export const Checkbox = forwardRef(({
                                         className,
