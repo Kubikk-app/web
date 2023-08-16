@@ -1,7 +1,14 @@
-import {SwitchProps} from "./Switch.props.ts";
 import styles from './Switch.module.css';
 import cn from "classnames";
-import {ForwardedRef, forwardRef} from "react";
+import { ForwardedRef, forwardRef } from "react";
+
+import { DetailedHTMLProps, InputHTMLAttributes } from "react";
+
+
+export interface SwitchProps extends Omit<DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, 'type'> {
+    error?: boolean;
+    sizeel: 'big' | 'middle' | 'small';
+}
 
 export const Switch = forwardRef(({
                                       className,
@@ -17,12 +24,14 @@ export const Switch = forwardRef(({
         })}>
             <input
                 disabled={error}
-                className={[styles.input, error ? styles.error : '', className].join(" ")}
+                className={cn(className, styles.input, {
+                    [styles.error]: error
+                })}
                 type="checkbox"
                 ref={ref}
                 {...props}
             />
-            <span className={styles.switch}></span>
+            <span className={cn(styles.switch)}></span>
         </label>
     );
 });
