@@ -1,0 +1,80 @@
+.bigSize {
+    --width: 60px;
+}
+
+.midSize {
+    --width: 30px;
+}
+
+.smallSize {
+    --width: 15px;
+}
+
+.switchWrapper {
+    --bg-inner: #ccc;
+    --bg-circle: white;
+    --primary: #6765F8;
+    --error: red;
+
+    /*--width: 60px;*/
+    --height: calc(var(--width) / 2);
+    /*--inner-padding: 4px;*/
+    --inner-padding: calc(var(--width) / 15);
+    --transition: .4s;
+    --border-radius: var(--height);
+
+    display: inline-block;
+    position: relative;
+    width: var(--width);
+    height: calc(var(--height) + var(--inner-padding));
+}
+
+
+.input {
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+}
+
+.switch {
+    position: absolute;
+    cursor: pointer;
+    inset: 0 0 0 0;
+
+    background-color: var(--bg-inner);
+    border-radius: calc(var(--height) + var(--inner-padding));
+    transition: var(--transition);
+}
+
+.switch::before {
+    content: "";
+
+    position: absolute;
+    cursor: pointer;
+    left: var(--inner-padding);
+    bottom: var(--inner-padding);
+    height: calc(var(--height) - var(--inner-padding));
+    width: calc(var(--height) - var(--inner-padding));
+
+    border-radius: 50%;
+    background-color: var(--bg-circle);
+    transition: var(--transition);
+}
+
+.input:focus + .switch {
+    box-shadow: 0 0 1px var(--primary);
+}
+
+.error + .switch {
+    box-shadow: 0 0 2px var(--error);
+}
+
+.input:checked + .switch {
+    background-color: var(--primary);
+}
+
+.input:checked + .switch::before {
+    transform: translateX(calc(var(--height) - var(--inner-padding)));
+}

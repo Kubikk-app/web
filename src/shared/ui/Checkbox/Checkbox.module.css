@@ -1,0 +1,109 @@
+.checkboxWrapper {
+    --bg: #F6F7F8;
+    --border: #9CA1B2;
+    --primary: #6765F8;
+    --bg-disabled: #EEEEEE;
+    --color: white;
+    --color-disabled: #9CA1B2;
+    --error: #cb2d2d;
+    --bg-error: rgba(203, 45, 45, 0.15);
+
+    --width: 16px;
+    --height: 16px;
+    --border-radius: 5px;
+    --margin-bottom: 0;
+
+
+    margin-bottom: var(--margin-bottom);
+    display: block;
+    margin-left: 20px;
+}
+
+.input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+
+    padding-left: 20px;;
+}
+
+.checkbox {
+    position: absolute;
+    width: var(--width);
+    height: var(--height);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
+    background-color: var(--bg);
+
+    margin-left: -20px;
+    box-sizing: border-box;
+}
+
+.checkbox svg {
+    content: "";
+    width: calc(var(--width) / 2);
+    height: calc(var(--height) / 2);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: none;
+    overflow: hidden;
+}
+
+
+.input:hover + .checkbox {
+    box-shadow: 0 0 0 8px rgba(0, 0, 0, 0.15) inset;
+}
+
+.input:focus + .checkbox {
+    box-shadow: 0 0 0 1px #656565;
+    box-sizing: border-box;
+}
+
+.input:checked + .checkbox {
+    background-color: var(--primary);
+    border: none;
+}
+
+.input:checked + .checkbox svg {
+    display: block;
+    fill: var(--color);
+}
+
+.input:disabled + .checkbox {
+    background-color: var(--bg-disabled);
+}
+
+.input:checked:disabled + .checkbox {
+    background-color: var(--bg-disabled);
+    border: none;
+}
+
+.input:checked:disabled + .checkbox svg {
+    display: block;
+    fill: var(--color-disabled);
+}
+
+.error {
+    border: 1px solid var(--error);
+    background-color: var(--bg-error);
+}
+
+.input:checked:disabled + .error,
+.input:disabled + .error    {
+    border: 1px solid var(--error);
+    background-color: var(--bg-error);
+}
+
+.input:checked:disabled + .error svg{
+    display: none;
+    overflow: hidden;
+}
+
+.errorWrapper {
+    color: var(--error);
+}
