@@ -1,7 +1,11 @@
-import {ForwardedRef, forwardRef} from 'react';
-import {RadioProps} from "./Radio.props.ts";
+import { ForwardedRef, forwardRef, DetailedHTMLProps, InputHTMLAttributes } from 'react';
 import styles from './Radio.module.css';
 import cn from "classnames";
+export interface RadioProps extends Omit<DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, 'type'> {
+    label?: string;
+    error?: boolean; // FieldError (if we will use 'react-hook-form')
+    name?: string;
+}
 
 
 export const Radio = forwardRef(({
