@@ -1,0 +1,16 @@
+.wrapper{
+    width: 770px;
+    height: 550px;
+}
+
+.description{
+
+}
+
+.commentSection{
+    width: 100%;
+}
+
+.avatarAndInputWrapper{
+    display: flex;
+}

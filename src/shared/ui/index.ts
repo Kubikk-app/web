@@ -4,3 +4,4 @@ export {Avatar} from './Avatar/Avatar.tsx';
 export {Form} from './Form/Form.tsx';
 export {LabelInput} from './LabelInput/LabelInput.tsx';
 export {FormGroup} from './FormGroup/FormGroup.tsx';
+export {Portal} from './Portal/Portal.tsx';

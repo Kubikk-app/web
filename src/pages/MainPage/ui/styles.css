@@ -1,0 +1,29 @@
+html,
+body,
+#root {
+    color: whitesmoke;
+    box-sizing: border-box;
+    background-color: #1a1a1a;
+}
+
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar:horizontal {
+    height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #de8bf6;
+    border-radius: 0.25rem;
+}
+
+.task> ::-webkit-scrollbar-thumb {
+    background-color: #1ea7fd;
+    border-radius: 0.5rem;
+}
+.icons{
+    width: 24px;
+    height: 24px;
+}

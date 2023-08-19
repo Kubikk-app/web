@@ -1,0 +1,109 @@
+.trashButtonStyles {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    opacity: 0.6;
+    stroke: #f0eaeb;
+    outline: none;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+.trashButtonStyles:hover {
+    opacity: 1;
+}
+
+.penButtonStyles{
+    position: absolute;
+    right: 1rem;
+    top: 0;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    opacity: 0.6;
+    stroke: #f0eaeb;
+    outline: none;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+}
+.penButtonStyles:hover{
+    opacity: 1;
+}
+
+.dragCard {
+    display: flex;
+    position: relative;
+    padding: 0.625rem;
+    align-items: center;
+    border-radius: 0.75rem;
+    border-width: 2px;
+    text-align: left;
+    cursor: grab;
+    opacity: 0.3;
+    height: 50px;
+    min-height: 50px;
+    border-color: blueviolet;
+    background-color: #2f2f32;
+}
+/*.editCardMode {*/
+/*    display: flex;*/
+/*    position: relative;*/
+/*    padding: 0.625rem;*/
+/*    align-items: center;*/
+/*    border-radius: 0.75rem;*/
+/*    text-align: left;*/
+/*    cursor: grab;*/
+/*    height: 50px;*/
+/*    min-height: 50px;*/
+/*    background-color: #2f2f32;*/
+/*}*/
+
+/*.editCardMode:hover {*/
+/*    border-color: blueviolet;*/
+/*    --tw-ring-inset: inset;*/
+/*}*/
+
+/*.textAreaStyles {*/
+/*    border-radius: 0.25rem;*/
+/*    border-style: none;*/
+/*    width: 100%;*/
+/*    color: #ffffff;*/
+/*    background-color: transparent;*/
+/*    resize: none;*/
+/*    height: 50px;*/
+/*}*/
+
+/*.textAreaStyles:focus {*/
+/*    outline: 2px solid transparent;*/
+/*    outline-offset: 2px;*/
+/*}*/
+
+.cardStyles {
+    display: flex;
+    position: relative;
+    padding: 0.625rem;
+    align-items: center;
+    border-radius: 0.75rem;
+    text-align: left;
+    cursor: grab;
+    height: 50px;
+    min-height: 50px;
+    background-color: #2f2f32;
+}
+
+.cardStyles:hover {
+    --tw-ring-inset: inset;
+    outline: 1px solid blueviolet;
+}
+
+.cardTextP {
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100%;
+    white-space: pre-wrap;
+    height: 90%;
+
+}
